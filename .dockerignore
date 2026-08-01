@@ -1,0 +1,11 @@
+.git
+.idea
+.vscode
+target
+build
+dist
+*.iml
+*.iws
+*.ipr
+HELP.md
+README.md
