@@ -1,0 +1,38 @@
+
+#postgres + keycloack + volumes + adminer (to manage db on web directly)
+#Keycloak : create realm and client and test user , connect to backed for jwt validation (in app.properties)
+# create users and its passwords and assign roles (STAFF , USER , ORGANIZER)
+# docker compose up : for starting  , mvn clean compile : for updating codebase to lastest
+services:
+  db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: changemeinprod!
+
+  adminer:
+    image: adminer:latest
+    restart: always
+    ports:
+      - "8888:8080"
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    ports:
+      - "9090:8080"
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    volumes:
+      - keycloak-data:/opt/keycloak/data
+    command:
+      - start-dev
+      - --db=dev-file
+
+volumes:
+  keycloak-data:
+    driver: local
+
+
