@@ -3,6 +3,7 @@ package com.project.tickets.config;
 import com.project.tickets.filters.UserProvisioningFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -18,6 +19,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 
 @Configuration
+@Profile("!render") // real Keycloak-backed security; disabled on Render (see SecurityConfigRender)
 public class SecurityConfig {
 
     @Bean
