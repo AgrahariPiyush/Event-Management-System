@@ -16,3 +16,5 @@ public class TicketsApplication {
 
 //swagger link
 //http://localhost:8081/swagger-ui/index.html#/
+//https://event-management-system-0x39.onrender.com/swagger-ui/index.html
+
